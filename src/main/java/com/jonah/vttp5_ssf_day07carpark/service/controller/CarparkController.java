@@ -1,31 +1,29 @@
-package com.jonah.vttp5_ssf_day07carpark.restcontroller;
+package com.jonah.vttp5_ssf_day07carpark.service.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.jonah.vttp5_ssf_day07carpark.model.Carpark;
 import com.jonah.vttp5_ssf_day07carpark.service.CarparkRestService;
 
-@RestController
-@RequestMapping("/api/carparks")
-public class CarparkRestController {
+@Controller
+@RequestMapping("/carparkform")
+public class CarparkController {
     @Autowired
     CarparkRestService carparkRestService;
 
-    @GetMapping()
-    public ResponseEntity<List<Carpark>> getCarparks(){
+    
+    @GetMapping("")
+    public String getCarparksHtml(Model model){
         List<Carpark> carparks = new ArrayList<>();
         carparks = carparkRestService.getCarparks();
-
-        return ResponseEntity.ok().body(carparks);
+        model.addAttribute("carparks", carparks);
+        return "carparklist";
     }
-
-    
 }

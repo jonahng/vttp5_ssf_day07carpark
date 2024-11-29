@@ -28,13 +28,11 @@ public class CarparkRestService {
         
         JsonReader jReader = Json.createReader(new StringReader(carparkData));
         JsonObject jObject = jReader.readObject();
-        //JsonObject jDataObject = jObject.getJsonObject("items").getJsonObject("carpark_data").getJsonObject("carpark_info");
-        //USE JSONARRAY Instead
+
         JsonArray jsonArray = jObject.getJsonArray("items");
-        //System.out.println("jsonArray: " + jsonArray);
-        //convert to object
+
         
-        //JsonArray carparkDataArray = jsonArray.getJsonArray(1);
+
 
         JsonArray carparkDataObject = jsonArray.getJsonObject(0).getJsonArray("carpark_data");
         //System.out.println("carparkDataArray: " + carparkDataObject);
