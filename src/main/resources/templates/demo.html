@@ -20,7 +20,7 @@
     </p>
 
     <p>
-        <span th:utext="${#dates.format}"> modified </span>
+        <span th:utext="${#dates.format(date, 'dd MMM yyyy HH:MM:ss')}"> modified </span>
     </p>
     
   </div>
